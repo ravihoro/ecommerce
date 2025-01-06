@@ -31,3 +31,7 @@ Future<Either<Failure, R>> getRepositoryCall<R, T>(
     return const Left(CustomFailure('Something went wrong'));
   }
 }
+
+String capitaliseFirstLetter(String str) {
+  return str.substring(0, 1).toUpperCase() + str.substring(1);
+}
