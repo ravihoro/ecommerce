@@ -42,7 +42,7 @@ class CategoryRow extends StatelessWidget {
                   Row(
                     spacing: 8,
                     mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: state.categories!
                         .map(
                           (e) => SizedBox(

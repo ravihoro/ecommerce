@@ -33,5 +33,11 @@ Future<Either<Failure, R>> getRepositoryCall<R, T>(
 }
 
 String capitaliseFirstLetter(String str) {
-  return str.substring(0, 1).toUpperCase() + str.substring(1);
+  List<String> list = str.split(" ");
+  for (int i = 0; i < list.length; i++) {
+    if (list[i].isNotEmpty) {
+      list[i] = list[i][0].toUpperCase() + list[i].substring(1);
+    }
+  }
+  return list.join(" ");
 }

@@ -27,35 +27,40 @@ class CategoryPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: categories
               .map(
-                (e) => Container(
-                  padding: const EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                    color: CustomColors.greyBackground,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Row(
-                    spacing: 10,
-                    children: [
-                      Container(
-                        clipBehavior: Clip.antiAlias,
-                        height: 60,
-                        width: 60,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(),
-                          image: DecorationImage(
-                            image: NetworkImage(
-                              CATEGORY_IMAGES[categories.indexOf(e)],
+                (e) => InkWell(
+                  onTap: () {
+                    context.router.pushNamed('/category/$e');
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      color: CustomColors.greyBackground,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Row(
+                      spacing: 10,
+                      children: [
+                        Container(
+                          clipBehavior: Clip.antiAlias,
+                          height: 60,
+                          width: 60,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(),
+                            image: DecorationImage(
+                              image: NetworkImage(
+                                CATEGORY_IMAGES[categories.indexOf(e)],
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      Expanded(
-                        child: Text(
-                          capitaliseFirstLetter(e),
+                        Expanded(
+                          child: Text(
+                            capitaliseFirstLetter(e),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               )

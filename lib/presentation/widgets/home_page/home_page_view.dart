@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:ecommerce/presentation/bloc/home_page/home_page_state.dart';
 import 'package:ecommerce/presentation/widgets/home_page/category_row.dart';
 import 'package:ecommerce/presentation/widgets/home_page/products_row.dart';
@@ -30,12 +31,22 @@ class HomePageView extends StatelessWidget {
           ),
           CategoryRow(state: state),
           ProductsRow(
-            widget: TitleRow(title: "Men's Clothing"),
+            widget: TitleRow(
+              title: "Men's Clothing",
+              onPress: () {
+                context.router.pushNamed('/category/${state.categories![2]}');
+              },
+            ),
             isLoading: state.isMenProductsLoading,
             products: state.menProducts,
           ),
           ProductsRow(
-            widget: TitleRow(title: "Women's Clothing"),
+            widget: TitleRow(
+              title: "Women's Clothing",
+              onPress: () {
+                context.router.pushNamed('/category/${state.categories![3]}');
+              },
+            ),
             isLoading: state.isWomenProductsLoading,
             products: state.womenProducts,
           ),

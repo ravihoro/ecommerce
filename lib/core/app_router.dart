@@ -13,5 +13,9 @@ class AppRouter extends RootStackRouter {
           page: CategoryRoute.page,
           path: '/categories',
         ),
+        AutoRoute(
+          page: ProductsRoute.page,
+          path: '/category/:category',
+        ),
       ];
 }
