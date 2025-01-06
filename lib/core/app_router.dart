@@ -9,5 +9,9 @@ class AppRouter extends RootStackRouter {
           page: HomeRoute.page,
           initial: true,
         ),
+        AutoRoute(
+          page: CategoryRoute.page,
+          path: '/categories',
+        ),
       ];
 }

@@ -1,3 +1,5 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:ecommerce/core/app_router.gr.dart';
 import 'package:ecommerce/core/constants.dart';
 import 'package:ecommerce/core/helper_functions.dart';
 import 'package:ecommerce/presentation/bloc/home_page/home_page_state.dart';
@@ -29,7 +31,13 @@ class CategoryRow extends StatelessWidget {
                 children: [
                   TitleRow(
                     title: "Categories",
-                    onPress: () {},
+                    onPress: () {
+                      context.pushRoute(
+                        CategoryRoute(
+                          categories: state.categories!,
+                        ),
+                      );
+                    },
                   ),
                   Row(
                     spacing: 8,
