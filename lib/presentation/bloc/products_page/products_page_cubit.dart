@@ -16,11 +16,14 @@ class ProductsPageCubit extends Cubit<ProductsPageState> {
     emit(state.copyWith(isLoading: true));
     var either =
         await _getProductsByCategoryUseCase.getProductsByCategory(category);
-    either.fold(
-      (l) => emit(state.copyWith(isLoading: false, failure: l)),
-      (r) => emit(
-        state.copyWith(isLoading: false, products: r),
-      ),
-    );
+
+    if (!isClosed) {
+      either.fold(
+        (l) => emit(state.copyWith(isLoading: false, failure: l)),
+        (r) => emit(
+          state.copyWith(isLoading: false, products: r),
+        ),
+      );
+    }
   }
 }
