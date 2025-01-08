@@ -56,6 +56,17 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("eCommerce"),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.favorite),
+            onPressed: () => {
+              context.router.pushNamed('/favorites'),
+            },
+          ),
+        ],
+      ),
       body: BlocBuilder<HomePageCubit, HomePageState>(
         builder: (context, state) {
           return state.isCategoriesLoading &&
@@ -70,7 +81,11 @@ class _HomePageState extends State<HomePage> {
                         'Something went wrong',
                       ),
                     )
-                  : HomePageView(state: state);
+                  : SingleChildScrollView(
+                      child: HomePageView(
+                        state: state,
+                      ),
+                    );
         },
       ),
     );

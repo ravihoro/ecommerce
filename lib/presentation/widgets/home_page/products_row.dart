@@ -1,5 +1,5 @@
 import 'package:ecommerce/domain/entities/product.dart';
-import 'package:ecommerce/presentation/widgets/home_page/product_item.dart';
+import 'package:ecommerce/presentation/widgets/product_item.dart';
 import 'package:flutter/material.dart';
 
 class ProductsRow extends StatelessWidget {

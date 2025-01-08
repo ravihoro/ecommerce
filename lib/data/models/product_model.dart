@@ -31,6 +31,34 @@ class ProductModel extends Equatable {
     );
   }
 
+  factory ProductModel.fromDbJson(Map<String, dynamic> json) {
+    return ProductModel(
+      id: json['id'],
+      title: json['title'],
+      price: double.parse(json['price'].toString()),
+      description: json['description'],
+      category: json['category'],
+      image: json['image'],
+      rating: RatingModel(
+        count: json['count'],
+        rate: json['rate'],
+      ),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'title': title,
+      'price': price,
+      'description': description,
+      'category': category,
+      'image': image,
+      'rate': rating.rate,
+      'count': rating.count,
+    };
+  }
+
   @override
   List<Object?> get props => [
         id,
@@ -57,6 +85,13 @@ class RatingModel extends Equatable {
       rate: json['rate'].toDouble(),
       count: json['count'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'rate': rate,
+      'count': count,
+    };
   }
 
   @override
