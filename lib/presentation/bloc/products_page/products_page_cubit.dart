@@ -5,12 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class ProductsPageCubit extends Cubit<ProductsPageState> {
   final GetProductsByCategoryUseCase _getProductsByCategoryUseCase;
 
-  final ProductsPageState? initialState;
-
   ProductsPageCubit(
-    this._getProductsByCategoryUseCase, {
-    this.initialState,
-  }) : super(initialState ?? const ProductsPageState());
+    this._getProductsByCategoryUseCase,
+  ) : super(const ProductsPageState());
 
   Future<void> getProductsByCategory(String category) async {
     emit(state.copyWith(isLoading: true));

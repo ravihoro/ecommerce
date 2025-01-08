@@ -21,7 +21,7 @@ class ProductsPageState extends Equatable {
     return ProductsPageState(
       products: products ?? this.products,
       isLoading: isLoading ?? this.isLoading,
-      failure: failure ?? this.failure,
+      failure: failure,
     );
   }
 

@@ -6,12 +6,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class HomePageCubit extends Cubit<HomePageState> {
   final GetCategoriesUseCase _getCategoriesUseCase;
   final GetProductsByCategoryUseCase _getProductsByCategoryUseCase;
-  final HomePageState? initialState;
 
-  HomePageCubit(this._getCategoriesUseCase, this._getProductsByCategoryUseCase,
-      {this.initialState})
-      : super(
-          initialState ?? HomePageState(),
+  HomePageCubit(
+    this._getCategoriesUseCase,
+    this._getProductsByCategoryUseCase,
+  ) : super(
+          HomePageState(),
         );
 
   Future<void> getCategories() async {

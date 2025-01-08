@@ -4,6 +4,7 @@ import 'package:equatable/equatable.dart';
 class Product extends Equatable {
   final int id;
   final String title;
+  final String category;
   final String description;
   final double price;
   final String image;
@@ -12,6 +13,7 @@ class Product extends Equatable {
   const Product({
     required this.id,
     required this.title,
+    required this.category,
     required this.description,
     required this.price,
     required this.image,
@@ -21,11 +23,24 @@ class Product extends Equatable {
   factory Product.fromModel(ProductModel model) {
     return Product(
       id: model.id,
+      category: model.category,
       title: model.title,
       description: model.description,
       price: model.price,
       image: model.image,
       rating: Rating.fromModel(model.rating),
+    );
+  }
+
+  ProductModel toProductModel() {
+    return ProductModel(
+      id: id,
+      title: title,
+      price: price,
+      description: description,
+      category: category,
+      image: image,
+      rating: rating.toRatingModel(),
     );
   }
 
@@ -37,6 +52,7 @@ class Product extends Equatable {
         price,
         image,
         rating,
+        category,
       ];
 }
 
@@ -54,6 +70,10 @@ class Rating extends Equatable {
       rate: model.rate,
       count: model.count,
     );
+  }
+
+  RatingModel toRatingModel() {
+    return RatingModel(rate: rate, count: count);
   }
 
   @override

@@ -57,9 +57,9 @@ class HomePageState extends Equatable {
       isMenProductsLoading: isMenProductsLoading ?? this.isMenProductsLoading,
       isWomenProductsLoading:
           isWomenProductsLoading ?? this.isWomenProductsLoading,
-      categoryFailure: categoryFailure ?? this.categoryFailure,
-      menProductsFailure: menProductsFailure ?? this.menProductsFailure,
-      womenProductsFailure: womenProductsFailure ?? this.womenProductsFailure,
+      categoryFailure: categoryFailure,
+      menProductsFailure: menProductsFailure,
+      womenProductsFailure: womenProductsFailure,
     );
   }
 }
