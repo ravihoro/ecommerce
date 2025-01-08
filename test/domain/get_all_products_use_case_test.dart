@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:ecommerce/core/failures.dart';
 import 'package:ecommerce/data/models/product_model.dart';
 import 'package:ecommerce/domain/entities/product.dart';
 import 'package:ecommerce/domain/repositories/product_repository.dart';
@@ -41,6 +42,24 @@ void main() {
       var rightValue = response.fold((l) => null, (r) => r);
 
       expect(rightValue, products);
+    },
+  );
+
+  test(
+    'should return server failure',
+    () async {
+      when(productRepository.getAllProducts)
+          .thenAnswer((products) async => const Left(ServerFailure('')));
+
+      var response = await getAllProductsUseCase.getAllProducts();
+
+      verify(productRepository.getAllProducts).called(1);
+
+      expect(response, isA<Left>());
+
+      var leftValue = response.fold((l) => l, (r) => null);
+
+      expect(leftValue, isA<ServerFailure>());
     },
   );
 }

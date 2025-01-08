@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:ecommerce/core/failures.dart';
 import 'package:ecommerce/data/models/product_model.dart';
 import 'package:ecommerce/domain/entities/product.dart';
 import 'package:ecommerce/domain/repositories/product_repository.dart';
@@ -47,6 +48,30 @@ void main() {
       final rightValue = response.fold((l) => null, (r) => r);
 
       expect(rightValue, isA<List<Product>>());
+    },
+  );
+
+  test(
+    'should return server failure',
+    () async {
+      when(() => productRepository.getProductsByCategory('jewelery'))
+          .thenAnswer(
+        (_) async => const Left(
+          ServerFailure(''),
+        ),
+      );
+
+      var response =
+          await getProductsByCategoryUseCase.getProductsByCategory('jewelery');
+
+      verify(() => productRepository.getProductsByCategory('jewelery'))
+          .called(1);
+
+      expect(response, isA<Left>());
+
+      final leftValue = response.fold((l) => l, (r) => null);
+
+      expect(leftValue, isA<ServerFailure>());
     },
   );
 }
