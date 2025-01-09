@@ -94,4 +94,24 @@ void main() {
       expect(rightValue, isA<List<ProductModel>>());
     },
   );
+
+  test(
+    'should successfully fetch product by id',
+    () async {
+      var id = products[0].id;
+
+      when(() => mockProductDataSource.getProductById(id))
+          .thenAnswer((_) async => mockProducts[0]);
+
+      var response = await repository.getProductById(id);
+
+      verify(() => mockProductDataSource.getProductById(id)).called(1);
+
+      expect(response, isA<Right>());
+
+      final rightValue = response.fold((l) => null, (r) => r);
+
+      expect(rightValue, isA<ProductModel>());
+    },
+  );
 }

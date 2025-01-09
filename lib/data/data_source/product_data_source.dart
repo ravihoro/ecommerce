@@ -8,6 +8,8 @@ abstract class ProductDataSource {
   Future<List<Map<String, dynamic>>> getAllProducts();
 
   Future<List<Map<String, dynamic>>> getProductsByCategory(String category);
+
+  Future<Map<String, dynamic>> getProductById(int id);
 }
 
 class RemoteProductDataSource implements ProductDataSource {
@@ -40,5 +42,11 @@ class RemoteProductDataSource implements ProductDataSource {
       "$BASE_URL/category/$category",
       (json) => List<Map<String, dynamic>>.from(json),
     );
+  }
+
+  @override
+  Future<Map<String, dynamic>> getProductById(int id) {
+    return getCall(
+        _client, "$BASE_URL/$id", (json) => Map<String, dynamic>.from(json));
   }
 }

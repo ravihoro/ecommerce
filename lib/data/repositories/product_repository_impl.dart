@@ -39,4 +39,11 @@ class ProductRepositoryImpl implements ProductRepository {
       ],
     );
   }
+
+  @override
+  Future<Either<Failure, ProductModel>> getProductById(int id) async {
+    return await getRepositoryCall<ProductModel, Map<String, dynamic>>(
+        () => _dataSource.getProductById(id),
+        (json) => ProductModel.fromJson(json));
+  }
 }

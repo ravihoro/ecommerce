@@ -21,6 +21,10 @@ class AppRouter extends RootStackRouter {
         AutoRoute(
           page: FavoritesRoute.page,
           path: '/favorites',
-        )
+        ),
+        AutoRoute(
+          page: ProductDetailRoute.page,
+          path: '/products/:id',
+        ),
       ];
 }

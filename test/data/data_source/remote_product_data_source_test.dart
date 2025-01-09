@@ -68,4 +68,28 @@ void main() {
       expect(response, mockProducts);
     },
   );
+
+  test(
+    'should successfully fetch product by id',
+    () async {
+      var id = products[0].id;
+      when(() => client.get(Uri.parse('$BASE_URL/$id'))).thenAnswer(
+          (_) async => http.Response(jsonEncode(mockProducts[0]), 200));
+
+      var response = await dataSource.getProductById(id);
+
+      expect(response, mockProducts[0]);
+    },
+  );
+
+  test(
+    'should throw exception',
+    () async {
+      var id = products[0].id;
+      when(() => client.get(Uri.parse('$BASE_URL/$id')))
+          .thenAnswer((_) async => http.Response(jsonEncode({}), 404));
+
+      expect(() async => await dataSource.getProductById(id), throwsException);
+    },
+  );
 }

@@ -11,6 +11,7 @@ Future<T> getCall<T>(
   T Function(dynamic) fromJson,
 ) async {
   final response = await client.get(Uri.parse(url));
+  print("response: ${response.body}");
   if (response.statusCode == 200 || response.statusCode == 304) {
     return fromJson(jsonDecode(response.body));
   } else {

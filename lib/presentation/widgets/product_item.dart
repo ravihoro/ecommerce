@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:ecommerce/core/custom_colors.dart';
 import 'package:ecommerce/domain/entities/product.dart';
 import 'package:ecommerce/presentation/bloc/favorites/favorites_cubit.dart';
@@ -19,54 +20,59 @@ class ProductItem extends StatelessWidget {
     bool isFavorite =
         favorites.where((e) => e.id == product.id).toList().isNotEmpty;
 
-    return Container(
-      padding: const EdgeInsets.all(5),
-      height: 200,
-      width: 150,
-      color: CustomColors.greyBackground,
-      child: Stack(
-        children: [
-          Column(
-            spacing: 5,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: Image.network(
-                  product.image,
-                  height: 100,
-                  width: double.infinity,
+    return InkWell(
+      onTap: () {
+        context.router.pushNamed('/products/${product.id}');
+      },
+      child: Container(
+        padding: const EdgeInsets.all(5),
+        height: 200,
+        width: 150,
+        color: CustomColors.greyBackground,
+        child: Stack(
+          children: [
+            Column(
+              spacing: 5,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Image.network(
+                    product.image,
+                    height: 100,
+                    width: double.infinity,
+                  ),
                 ),
-              ),
-              Text(
-                product.title,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-              Text(
-                "\$${product.price.toStringAsFixed(2)}",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
+                Text(
+                  product.title,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
-              ),
-            ],
-          ),
-          Positioned(
-            top: 2,
-            right: 2,
-            child: InkWell(
-              onTap: () {
-                if (isFavorite) {
-                  context.read<FavoritesCubit>().removeFavorite(product.id);
-                } else {
-                  context.read<FavoritesCubit>().addFavorite(product);
-                }
-              },
-              child: Icon(
-                isFavorite ? Icons.favorite : Icons.favorite_outline,
+                Text(
+                  "\$${product.price.toStringAsFixed(2)}",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+            Positioned(
+              top: 2,
+              right: 2,
+              child: InkWell(
+                onTap: () {
+                  if (isFavorite) {
+                    context.read<FavoritesCubit>().removeFavorite(product.id);
+                  } else {
+                    context.read<FavoritesCubit>().addFavorite(product);
+                  }
+                },
+                child: Icon(
+                  isFavorite ? Icons.favorite : Icons.favorite_outline,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -9,4 +9,6 @@ abstract class ProductRepository {
 
   Future<Either<Failure, List<ProductModel>>> getProductsByCategory(
       String category);
+
+  Future<Either<Failure, ProductModel>> getProductById(int id);
 }
