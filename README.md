@@ -11,4 +11,4 @@ An ecommerce app built using Flutter.
 
 ## Screenshots
 
-<img src = "screenshots/ecom_1.jpg"> <img src = "screenshots/ecom_2.jpg"> <img src = "screenshots/ecom_3.jpg"> <br> <img src = "screenshots/ecom_4.jpg"> <img src = "screenshots/ecom_5.jpg">
+<img src = "screenshots/ecom_1.jpg" width = 250> <img src = "screenshots/ecom_2.jpg" width = 250> <img src = "screenshots/ecom_3.jpg" width = 250> <br> <img src = "screenshots/ecom_4.jpg" width = 250> <img src = "screenshots/ecom_5.jpg" width = 250>
