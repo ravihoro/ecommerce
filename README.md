@@ -1,16 +1,14 @@
-# ecommerce
+# Ecommerce
 
-A new Flutter project.
+An ecommerce app built using Flutter.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- Uses fakestoreapi for displaying products
+- Uses SQLite for storing favorites
+- Follows Clean Architecture and TDD
+- Used flutter_bloc for state management
 
-A few resources to get you started if this is your first Flutter project:
+## Screenshots
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src = "screenshots/ecom_1.jpg"> <img src = "screenshots/ecom_2.jpg"> <img src = "screenshots/ecom_3.jpg"> <br> <img src = "screenshots/ecom_4.jpg"> <img src = "screenshots/ecom_5.jpg">
